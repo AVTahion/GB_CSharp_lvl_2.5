@@ -1,0 +1,14 @@
+﻿CREATE TABLE [dbo].[Employee]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY,
+    [FIO] CHAR(50) NULL DEFAULT 'fio', 
+    [Age] INT NOT NULL DEFAULT 0, 
+    [DepID] INT NOT NULL DEFAULT 0, 
+    [Salary] INT NOT NULL DEFAULT 0
+)
+
+CREATE TABLE [dbo].[Department]
+(
+	[DepID] INT NOT NULL PRIMARY KEY IDENTITY (0, 1), 
+    [Name] NCHAR(30) NULL,
+)

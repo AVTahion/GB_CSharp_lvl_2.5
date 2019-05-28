@@ -34,10 +34,53 @@ namespace GB_CSharp_lvl_2._5
         public MainWindow()
         {
             InitializeComponent();
-            db.Init(10, 5);
-            listOfEmp.ItemsSource = db.employees;
-            listOfDep.ItemsSource = db.departments;
+            db.Init(100, 10);
+            this.DataContext = db;
 
+            //listOfEmp.ItemsSource = db.Employees.Where(
+            //    w => w.Department == "department 2");
+
+        }
+
+        private void ListOfDep_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            listOfEmp.ItemsSource = db.Employees.Where(
+                w => w.Department == (listOfDep.SelectedItem as Department)?.Name
+                );
+        }
+
+        private void Btn_DepDel_Click(object sender, RoutedEventArgs e)
+        {
+            db.DelDep(listOfDep.SelectedItem as Department);
+        }
+
+        private void Btn_DepAdd_Click(object sender, RoutedEventArgs e)
+        {
+            db.DepAdd();
+        }
+
+        private void Btn_EmpDel_Click(object sender, RoutedEventArgs e)
+        {
+            db.EmpDel(listOfEmp.SelectedItem as Employee);
+            listOfEmp.ItemsSource = db.Employees.Where(
+               w => w.Department == (listOfDep.SelectedItem as Department)?.Name
+               );
+        }
+
+        private void Btn_EmpAdd_Click(object sender, RoutedEventArgs e)
+        {
+            db.EmpAdd(new Employee((listOfDep.SelectedItem as Department)?.Name));
+            listOfEmp.ItemsSource = db.Employees.Where(
+               w => w.Department == (listOfDep.SelectedItem as Department)?.Name
+               );
+        }
+
+        private void Btn_EmpChange_Click(object sender, RoutedEventArgs e)
+        {
+            if (listOfEmp.SelectedItem != null)
+            {
+                new Win_EmpChanging(db, db.Employees.IndexOf(listOfEmp.SelectedItem as Employee)).ShowDialog();
+            }
         }
     }
 }

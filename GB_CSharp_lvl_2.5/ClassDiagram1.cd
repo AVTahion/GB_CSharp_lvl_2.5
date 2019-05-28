@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GB_CSharp_lvl_2._5.DBClass">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAEAAAAAAAAAAAAAAAIIAAgAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>DBClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GB_CSharp_lvl_2._5.Employee">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAACAAAAAAAAAEAEAAAAAAEAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>DBClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GB_CSharp_lvl_2._5.Department">
+    <Position X="4.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DBClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

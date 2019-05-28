@@ -5,30 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GB_CSharp_lvl_2._5"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="670" MinWidth="670" MinHeight="450">
+        Title="MainWindow" Height="400" Width="660" ResizeMode="CanMinimize">
     <Grid>
-        <ListView x:Name="listOfEmp" HorizontalAlignment="Left" Height="268" Margin="28,25,0,0" VerticalAlignment="Top" Width="358" SelectionMode="Single" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="260"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+        <ListView x:Name="listOfEmp" HorizontalAlignment="Left" Height="268" Width="340" Margin="25,25,35,0" VerticalAlignment="Top"  SelectionMode="Single" Grid.Column="1" Grid.ColumnSpan="2">
             <ListView.View>
                 <GridView >
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=FIO}" 
+                    <GridViewColumn DisplayMemberBinding="{Binding FIO}" 
                                     Header="ФИО" 
                                     Width="100"/>
-                    
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=Age}" 
+                    <GridViewColumn DisplayMemberBinding="{Binding Age}" 
                                     Header="Возраст" 
                                     Width="60"/>
-                    
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=Department}" 
+                    <GridViewColumn DisplayMemberBinding="{Binding Department}" 
                                     Header="Департамент" 
                                     Width="100"/>
-                    
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=Salary}" 
+                    <GridViewColumn DisplayMemberBinding="{Binding Salary}" 
                                     Header="Зарплата" 
                                     Width="60"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <ListView x:Name="listOfDep" HorizontalAlignment="Left" Height="148" Margin="427,25,0,0" VerticalAlignment="Top" Width="203" SelectionMode="Single">
+        <ListView x:Name="listOfDep" ItemsSource="{Binding Departments}" HorizontalAlignment="Left" Height="148" Margin="32,25,0,0" VerticalAlignment="Top" Width="203" 
+                  SelectionMode="Single" 
+                  SelectionChanged="ListOfDep_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=Name}"
@@ -37,6 +41,11 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        <Button x:Name="btn_DepAdd" Content="Добавить департамент" HorizontalAlignment="Left" Margin="32,194,0,0" VerticalAlignment="Top" Width="203" Click="Btn_DepAdd_Click" Height="20"/>
+        <Button x:Name="btn_DepDel" Content="Удалить департамент" HorizontalAlignment="Left" Margin="32,232,0,0" VerticalAlignment="Top" Width="203" Click="Btn_DepDel_Click" Height="20"/>
+        <Button x:Name="btn_EmpAdd" Content="Добавить" HorizontalAlignment="Left" Margin="25,315,0,0" VerticalAlignment="Top" Width="80" Grid.Column="1" Height="20" Click="Btn_EmpAdd_Click"/>
+        <Button x:Name="Btn_EmpChange" Content="Изменить" HorizontalAlignment="Left" Margin="160,315,0,0" VerticalAlignment="Top" Width="80" Grid.Column="1" Height="20" Grid.ColumnSpan="2" Click="Btn_EmpChange_Click"/>
+        <Button x:Name="Btn_EmpDel" Content="Удалить" HorizontalAlignment="Left" Margin="85,315,0,0" VerticalAlignment="Top" Width="80" Grid.Column="2" Height="20" Click="Btn_EmpDel_Click"/>
 
     </Grid>
 </Window>
