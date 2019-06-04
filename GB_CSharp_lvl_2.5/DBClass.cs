@@ -26,7 +26,7 @@ namespace GB_CSharp_lvl_2._5
 
             for (int i = 0; i < x; i++)
             {
-                EmpAdd(new Employee(Departments[rnd.Next(1, y)].Name, "fio " + i, rnd.Next(20, 60), rnd.Next(5000, 25000)));
+                EmpAdd(new Employee(Departments[rnd.Next(1, y)].ID, "fio " + i, rnd.Next(20, 60), rnd.Next(5000, 25000)));
             }
         }
 
@@ -72,31 +72,33 @@ namespace GB_CSharp_lvl_2._5
         /// <param name="x"></param>
         public void DelDep(Department x)
         {
-            if (x.Name != "none")
+            if (x.Name != "none" || x.ID != 0)
             {
                 foreach (var emp in Employees)
                 {
-                    if (emp.Department == x.Name) emp.Department = "none";
+                    if (emp.DepID == x.ID) emp.DepID = 0;
                 }
                 Departments.Remove(x);
             }
         }
     }
 
-    class Employee
+    class Employee : ICloneable
     {
         public string FIO { get; set; }
         public int Age { get; set; }
-        public string Department { get; set; }
+        public int DepID { get; set; }
         public int Salary { get; set; }
 
-        public Employee(string dep = "none", string fio = "new_fio", int age = 0, int salary = 0)
+        public Employee(int dep = 0, string fio = "new_fio", int age = 0, int salary = 0)
         {
             FIO = fio;
             Age = age;
-            Department = dep;
+            DepID = dep;
             Salary = salary;
         }
+
+        public object Clone() => this.MemberwiseClone();
     }
 
     class Department

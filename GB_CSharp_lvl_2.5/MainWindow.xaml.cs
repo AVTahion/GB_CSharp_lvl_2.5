@@ -29,24 +29,27 @@ namespace GB_CSharp_lvl_2._5
     /// </summary>
     public partial class MainWindow : Window
     {
-        DBClass db = new DBClass();
+        //Data Source = (localdb)\MSSQLLocalDB;Initial Catalog = Lesson7; Integrated Security = True; Pooling=False
+
+                DBClass db = new DBClass();
 
         public MainWindow()
         {
             InitializeComponent();
             db.Init(100, 10);
             this.DataContext = db;
-
-            //listOfEmp.ItemsSource = db.Employees.Where(
-            //    w => w.Department == "department 2");
-
         }
 
         private void ListOfDep_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             listOfEmp.ItemsSource = db.Employees.Where(
-                w => w.Department == (listOfDep.SelectedItem as Department)?.Name
+                w => w.DepID == (listOfDep.SelectedItem as Department)?.ID
                 );
+
+            //TODO отображение названия департамента в списке
+            //Department tempDep = listOfDep.SelectedItem as Department;
+            //ColumnDep.DisplayMemberBinding =  tempDep.Name;
+
         }
 
         private void Btn_DepDel_Click(object sender, RoutedEventArgs e)
@@ -63,15 +66,15 @@ namespace GB_CSharp_lvl_2._5
         {
             db.EmpDel(listOfEmp.SelectedItem as Employee);
             listOfEmp.ItemsSource = db.Employees.Where(
-               w => w.Department == (listOfDep.SelectedItem as Department)?.Name
+               w => w.DepID == (listOfDep.SelectedItem as Department)?.ID
                );
         }
 
         private void Btn_EmpAdd_Click(object sender, RoutedEventArgs e)
         {
-            db.EmpAdd(new Employee((listOfDep.SelectedItem as Department)?.Name));
+            db.EmpAdd(new Employee((listOfDep.SelectedItem as Department).ID));
             listOfEmp.ItemsSource = db.Employees.Where(
-               w => w.Department == (listOfDep.SelectedItem as Department)?.Name
+               w => w.DepID == (listOfDep.SelectedItem as Department)?.ID
                );
         }
 

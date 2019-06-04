@@ -21,7 +21,8 @@
                     <GridViewColumn DisplayMemberBinding="{Binding Age}" 
                                     Header="Возраст" 
                                     Width="60"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Department}" 
+                    <GridViewColumn x:Name="ColumnDep"
+                                    DisplayMemberBinding="{Binding DepID}" 
                                     Header="Департамент" 
                                     Width="100"/>
                     <GridViewColumn DisplayMemberBinding="{Binding Salary}" 
